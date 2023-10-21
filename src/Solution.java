@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Solution {
     public int singleNumber(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
@@ -45,11 +49,36 @@ public class Solution {
         int[] newArr = new int[nums.length];
         newArr[0] = nums[0];
         newArr[nums.length - 1] = nums[nums.length - 1];
-        for (int i = 1; i < nums.length; i++) {
-            newArr[i] = newArr[n];
-            newArr[i + 1] = newArr[n + 1];
+        for (int i = 1; i < nums.length - 2; i++) {
+            newArr[i] = nums[n];
+            newArr[i + 1] = nums[n + 1];
             n++;
         }
         return newArr;
+    }
+    public int findNumbers(int[] nums) {
+        int count = 0;
+        for (int n: nums) {
+            if (String.valueOf(n).length() % 2 == 0) count++;
+        }
+        return count;
+    }
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+//        int[] tmpNums1 = new int[m+n];
+//        if (nums1.length == 0) nums1 = nums2;
+//        else {
+//            for (int i = 0; i < tmpNums1.length; i++) {
+//                nums1[m] = nums2[i];
+//                m++;
+//            }
+//        }
+        nums1 = Arrays.copyOfRange(nums2, m, nums1.length - 1);
+        Arrays.sort(nums1);
+    }
+    public int firstUniqChar(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+        }
     }
 }

@@ -89,6 +89,7 @@ public class Solution {
         }
         return -1;
     }
+
     public int removeElement(int[] nums, int val) {
         List<Integer> numsList = new ArrayList<>();
         for (int num : nums) {
@@ -101,6 +102,7 @@ public class Solution {
         }
         return numsList.size();
     }
+
     public void duplicateZeros(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
@@ -111,6 +113,7 @@ public class Solution {
             }
         }
     }
+
     public void moveZeroes(int[] nums) {
 //        Arrays.sort(nums);
 //        int count = 0;
@@ -139,4 +142,55 @@ public class Solution {
         }
     }
 
+    public int longestMountain(int[] arr) {
+        /*int max = 0;
+        int left = 0;
+        int right = 0;
+        int top = 0;
+
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (arr[i] < arr[i-1] && arr[i] < arr[i+1]) {
+                left = i;
+                top = i + 1;
+                i++;
+            }
+            if (arr[i] > arr[i-1] && arr[i] < arr[i+1]) {
+
+            }
+        }*/
+        int result = 0;
+        if (arr == null || arr.length < 3) return result;
+        int i = 1;
+        int start = 0;
+        boolean upHill = false;
+        boolean downHill = false;
+        while (i < arr.length) {
+            start = i - 1;
+//go uphill
+            while (i < arr.length && arr[i - 1] < arr[i]) {
+                upHill = true;
+                i++;
+            }
+//go downhill
+            while (i < arr.length && arr[i - 1] > arr[i]) {
+                downHill = true;
+                i++;
+            }
+
+            //if found uphill and downhill then there was mountain
+            if (upHill && downHill) {
+                //only update when mountain size was equal or greater than 3
+                if (i - start >= 3) result = Math.max(i - start, result);
+            } else {
+                //if there was no mountain, then ensuring it's not plain surface
+                while (i < arr.length && arr[i - 1] == arr[i]) i++;
+            }
+
+            //update uphill and downhill for next iteration.
+            upHill = false;
+            downHill = false;
+        }
+        return result;
+
+    }
 }

@@ -143,22 +143,7 @@ public class Solution {
     }
 
     public int longestMountain(int[] arr) {
-        /*int max = 0;
-        int left = 0;
-        int right = 0;
-        int top = 0;
-
-        for (int i = 1; i < arr.length - 1; i++) {
-            if (arr[i] < arr[i-1] && arr[i] < arr[i+1]) {
-                left = i;
-                top = i + 1;
-                i++;
-            }
-            if (arr[i] > arr[i-1] && arr[i] < arr[i+1]) {
-
-            }
-        }*/
-        int result = 0;
+       /* int result = 0;
         if (arr == null || arr.length < 3) return result;
         int i = 1;
         int start = 0;
@@ -190,7 +175,48 @@ public class Solution {
             upHill = false;
             downHill = false;
         }
+        return result;*/
+        // arr = [2,1,4,7,3,2,5]
+        int result = 0;
+        int left = 0;
+        int right = 0;
+        if (arr.length < 3) return 0;
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+                left  = i;
+                right = i;
+                while (left > 0 && arr[left] > arr[left - 1]) left--;
+                while (right < arr.length - 1 && arr[right] > arr[right + 1]) right++;
+                result = Math.max(right - left + 1, result);
+            }
+        }
         return result;
-
+    }
+    public int balancedStringSplit(String s) {
+        char[] charArr = s.toCharArray();
+        int countR = 0;
+        int countL = 0;
+        int result = 0;
+        for (char c : charArr) {
+            if (c == 'R') countR++;
+            else if (c == 'L') countL++;
+            if (countL == countR) {
+                result++;
+                countR = 0;
+                countL = 0;
+            }
+        }
+        return result;
+    }
+    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        StringBuilder word1Str = new StringBuilder();
+        StringBuilder word2Str = new StringBuilder();
+        for (String str : word1) {
+            word1Str.append(str);
+        }
+        for (String str : word2) {
+            word2Str.append(str);
+        }
+        return word1Str.toString().contentEquals(word2Str);
     }
 }

@@ -9,8 +9,9 @@ public class Main {
         //System.out.println(solution.majorityElement(nums));
         //System.out.println(Arrays.toString(solution.shuffle(nums, nums.length / 2)));
         //System.out.println(solution.firstUniqChar("hhllo"));
-        int[] nums = new int[]{0,1,0,3,12};
-        solution.moveZeroes(nums);
-
+        //System.out.println(solution.balancedStringSplit(s));
+        String[] word1 = new String[]{"ab", "c"};
+        String[] word2 = new String[]{"a", "bc"};
+        System.out.println(solution.arrayStringsAreEqual(word1, word2));
     }
 }

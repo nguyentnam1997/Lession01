@@ -183,7 +183,7 @@ public class Solution {
         if (arr.length < 3) return 0;
         for (int i = 1; i < arr.length - 1; i++) {
             if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
-                left  = i;
+                left = i;
                 right = i;
                 while (left > 0 && arr[left] > arr[left - 1]) left--;
                 while (right < arr.length - 1 && arr[right] > arr[right + 1]) right++;
@@ -192,6 +192,7 @@ public class Solution {
         }
         return result;
     }
+
     public int balancedStringSplit(String s) {
         char[] charArr = s.toCharArray();
         int countR = 0;
@@ -208,6 +209,7 @@ public class Solution {
         }
         return result;
     }
+
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
         StringBuilder word1Str = new StringBuilder();
         StringBuilder word2Str = new StringBuilder();
@@ -218,5 +220,43 @@ public class Solution {
             word2Str.append(str);
         }
         return word1Str.toString().contentEquals(word2Str);
+    }
+
+    public static void bubbleSoft(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length - 1; j++) {
+                if (arr[j] > arr[i]) {
+                    int tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+    }
+
+    public static void selectionSoft(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int maxIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] > arr[maxIndex]) {
+                    maxIndex = j;
+                }
+            }
+            int tmp = arr[i];
+            arr[i] = arr[maxIndex];
+            arr[maxIndex] = tmp;
+        }
+    }
+
+    public static void insertionSoft(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            int j = i - 1;
+            int newValue = nums[i];
+            while (j >= 0 && nums[j] < newValue) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            nums[j + 1] = newValue;
+        }
     }
 }

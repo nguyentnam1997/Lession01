@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,8 +11,10 @@ public class Main {
         //System.out.println(Arrays.toString(solution.shuffle(nums, nums.length / 2)));
         //System.out.println(solution.firstUniqChar("hhllo"));
         //System.out.println(solution.balancedStringSplit(s));
-        String[] word1 = new String[]{"ab", "c"};
-        String[] word2 = new String[]{"a", "bc"};
-        System.out.println(solution.arrayStringsAreEqual(word1, word2));
+        //System.out.println(solution.arrayStringsAreEqual(word1, word2));
+        Integer[] arr = {3,5,6,12,3,6,2};
+        //Solution.bubbleSoft(arr);
+        Arrays.sort(Arrays.stream(arr).toArray(), Collections.reverseOrder());
+        System.out.println(Arrays.toString(arr));
     }
 }

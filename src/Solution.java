@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Solution {
@@ -259,4 +260,35 @@ public class Solution {
             nums[j + 1] = newValue;
         }
     }
+
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        int firstMax = nums[nums.length - 1];
+        int secondMaxIndex = 0;
+        if (nums.length < 3) {
+            return firstMax;
+        }
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] < firstMax) {
+                secondMaxIndex = i;
+                break;
+            }
+        }
+        for (int i = secondMaxIndex - 1; i >= 0; i--) {
+            if (nums[i] < nums[secondMaxIndex]) {
+                return nums[i];
+            }
+        }
+        return firstMax;
+    }
+    public int heightChecker(int[] heights) {
+        int[] expected = heights.clone();
+        Arrays.sort(expected);
+        int result = 0;
+        for (int i = 0; i < heights.length; i++) {
+            if (heights[i] != expected[i]) result++;
+        }
+        return result;
+    }
+
 }

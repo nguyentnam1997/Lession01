@@ -12,9 +12,11 @@ public class Main {
         //System.out.println(solution.firstUniqChar("hhllo"));
         //System.out.println(solution.balancedStringSplit(s));
         //System.out.println(solution.arrayStringsAreEqual(word1, word2));
-        Integer[] arr = {3,5,6,12,3,6,2};
-        //Solution.bubbleSoft(arr);
-        Arrays.sort(Arrays.stream(arr).toArray(), Collections.reverseOrder());
-        System.out.println(Arrays.toString(arr));
+//        Integer[] arr = {3,5,6,12,3,6,2};
+//        //Solution.bubbleSoft(arr);
+//        Arrays.sort(Arrays.stream(arr).toArray(), Collections.reverseOrder());
+//        System.out.println(Arrays.toString(arr));
+        int[] nums = {3,2,1};
+//        System.out.println(solution.thirdMax(nums));
     }
 }

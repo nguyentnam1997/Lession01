@@ -290,5 +290,39 @@ public class Solution {
         }
         return result;
     }
-
+    public String[] sortPeople(String[] names, int[] heights) {
+        Map<Integer, String> map = new HashMap<>();
+        int i = 0;
+        for (int h: heights) {
+            map.put(h, names[i++]);
+        }
+        Arrays.sort(heights);
+        i = 0;
+        for (int j = heights.length - 1; j >= 0; j--) {
+            names[i++] = map.get(heights[j]);
+        }
+        return names;
+    }
+    public int[] frequencySort(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> integers = new ArrayList<>();
+        for (int num: nums) {
+            integers.add(num);
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        Collections.sort(integers, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (map.get(o1) == map.get(o2)) {
+                    return o2.compareTo(o1);
+                }
+                return map.get(o1) - map.get(o2);
+            }
+        });
+        int[] sorted = new int[nums.length];
+        for (int i = 0; i < integers.size(); i++) {
+            sorted[i] = integers.get(i);
+        }
+        return sorted;
+    }
 }
